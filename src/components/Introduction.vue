@@ -5,7 +5,7 @@
         <IndexPresentation />
       </div>
       <div class="col-sm d-flex justify-content-center pt-5">
-        One of three columns
+        <Login />
       </div>
     </div>
   </div>
@@ -13,9 +13,10 @@
 
 <script>
 import IndexPresentation from "@/components/IndexPresentation";
+import Login from "@/components/Login";
 export default {
   name: "Introduction.vue",
-  components: { IndexPresentation },
+  components: { Login, IndexPresentation },
   data: function() {
     return {
       scrollPosition: null,
