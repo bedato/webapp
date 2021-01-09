@@ -20,7 +20,7 @@ export default {
   data: function() {
     return {
       scrollPosition: null,
-      isResponsive: false,
+      isResponsive: true,
       windowWidth: window.innerWidth
     };
   },

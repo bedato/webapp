@@ -15,10 +15,7 @@
       </div>
     </div>
     <div class="d-flex align-items-center justify-content-end">
-      <div
-        :class="{ openNav: isResponsive, openBurger: showNavigationItems }"
-        v-if="showNavigationItems"
-      >
+      <div :class="{ openNav: isResponsive }" v-if="showNavigationItems">
         <router-link class="px-3" to="/">Home</router-link>
         <router-link class="px-3" to="/about">About</router-link>
       </div>
