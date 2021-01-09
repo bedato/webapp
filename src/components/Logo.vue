@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-items-center">
+  <div class="mt-2">
     <img src="@/assets/logo.png" alt="Sample logo" class="logo-container" />
   </div>
 </template>

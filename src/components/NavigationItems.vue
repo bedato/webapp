@@ -1,6 +1,6 @@
 <template>
   <div class="w-50">
-    <div v-if="isResponsive" class="d-flex justify-content-end">
+    <div v-if="isResponsive" class="d-flex justify-content-end item-icon">
       <div v-if="showNavigationItems">
         <BIconXSquare
           style="width: 60px; height: 60px;"
@@ -74,5 +74,9 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+svg:hover {
+  cursor: pointer;
 }
 </style>

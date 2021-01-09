@@ -1,5 +1,5 @@
 <template>
-  <div class="container vh-100">
+  <div class="container -100">
     <div class="row pt-5">
       <div class="col-sm d-flex justify-content-center pt-5">
         <IndexPresentation />

@@ -1,12 +1,14 @@
 <template>
   <form>
-    <h1>login</h1>
+    <h1>{{ login }}</h1>
+
     <FormItem
       form-title="E-Mail Address"
       form-type="email"
       :form-placeholder="exampleMail"
     />
     <FormItem form-title="Password" form-type="password" />
+
     <button type="submit" class="btn btn-md w-100 mt-3">SUBMIT</button>
     <small class="mt-3">{{ small }} <a href="register">Register here</a></small>
   </form>
@@ -19,6 +21,7 @@ export default {
   components: { FormItem },
   data: function() {
     return {
+      login: "login",
       small: "Not yet on Kado?",
       url: "register",
       exampleMail: "karl@lagerfeld.com"
