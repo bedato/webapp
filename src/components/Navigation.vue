@@ -5,7 +5,7 @@
       class="d-flex justify-content-between container py-3"
     >
       <Logo />
-      <NavigationItems v-bind:isResponsive="isResponsive" />
+      <NavigationItems :isResponsive="isResponsive" />
     </nav>
   </div>
 </template>
@@ -20,12 +20,14 @@ export default {
   data: function() {
     return {
       scrollPosition: null,
-      isResponsive: true
+      isResponsive: false,
+      windowWidth: window.innerWidth
     };
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
   },
+  watch: {},
   methods: {
     updateScroll() {
       this.scrollPosition = window.scrollY;

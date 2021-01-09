@@ -9,7 +9,8 @@
 import Navigation from "@/components/Navigation";
 import Introduction from "@/components/Introduction";
 export default {
-  components: { Introduction, Navigation }
+  components: { Introduction, Navigation },
+  created() {}
 };
 </script>
 
