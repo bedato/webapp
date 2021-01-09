@@ -1,11 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <Navigation />
+    <Introduction />
   </div>
 </template>
 
-<style lang="scss"></style>
+<script>
+import Navigation from "@/components/Navigation";
+import Introduction from "@/components/Introduction";
+export default {
+  components: { Introduction, Navigation },
+  created() {}
+};
+</script>
+
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Teko:wght@400;600&display=swap");
+</style>
