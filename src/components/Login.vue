@@ -1,16 +1,29 @@
 <template>
   <form>
-    <h1>{{ login }}</h1>
+    <h1>{{ content.login }}</h1>
 
     <FormItem
       form-title="E-Mail Address"
       form-type="email"
-      :form-placeholder="exampleMail"
+      :form-placeholder="content.exampleMail"
+      :form-v-model="loginCreds.email"
     />
-    <FormItem form-title="Password" form-type="password" />
+    <FormItem
+      form-title="Password"
+      form-type="password"
+      :form-v-model="loginCreds.password"
+    />
 
-    <button type="submit" class="btn btn-md w-100 mt-3">SUBMIT</button>
-    <small class="mt-3">{{ small }} <a href="register">Register here</a></small>
+    <button
+      type="submit"
+      class="btn btn-md w-100 mt-3"
+      @click.prevent="login()"
+    >
+      {{ content.submit }}
+    </button>
+    <small class="mt-3"
+      >{{ content.small }} <a href="register">{{ content.register }}</a></small
+    >
   </form>
 </template>
 
@@ -21,11 +34,31 @@ export default {
   components: { FormItem },
   data: function() {
     return {
-      login: "login",
-      small: "Not yet on Kado?",
-      url: "register",
-      exampleMail: "karl@lagerfeld.com"
+      content: {
+        login: "login",
+        small: "Not yet on Kado?",
+        url: "register",
+        exampleMail: "karl@lagerfeld.com",
+        submit: "SUBMIT",
+        register: "Register here"
+      },
+      loginCreds: {
+        email: "clyde83@yahoo.com",
+        password: "localhostPassword",
+        loginFailed: false
+      }
     };
+  },
+  methods: {
+    login: function() {
+      console.log(this.loginCreds.email);
+      let email = this.loginCreds.email;
+      let password = this.loginCreds.password;
+      this.$store
+        .dispatch("login", { email, password })
+        .then(() => this.$router.push("/feed"))
+        .catch(err => console.log(err), (this.loginCreds.loginFailed = true));
+    }
   }
 };
 </script>

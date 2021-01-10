@@ -6,6 +6,7 @@
       class="form-control"
       :id="formType"
       :placeholder="formPlaceholder"
+      :v-model="formVModel"
     />
   </div>
 </template>
@@ -16,7 +17,8 @@ export default {
   props: {
     formType: String,
     formPlaceholder: String,
-    formTitle: String
+    formTitle: String,
+    formVModel: String
   }
 };
 </script>
