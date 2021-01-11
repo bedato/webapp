@@ -6,7 +6,9 @@
       class="form-control"
       :id="formType"
       :placeholder="formPlaceholder"
-      :v-model="formVModel"
+      :value="formValue"
+      @change="formChanged"
+      v-model="formValue"
     />
   </div>
 </template>
@@ -17,8 +19,20 @@ export default {
   props: {
     formType: String,
     formPlaceholder: String,
-    formTitle: String,
-    formVModel: String
+    formTitle: String
+  },
+  data: function() {
+    return {
+      formValue: {}
+    };
+  },
+  methods: {
+    formChanged() {
+      this.$emit("input", this.formValue);
+    }
+  },
+  created() {
+    this.formValue = this.value;
   }
 };
 </script>

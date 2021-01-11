@@ -7,11 +7,14 @@
       form-type="email"
       :form-placeholder="content.exampleMail"
       :form-v-model="loginCreds.email"
+      :value="loginCreds.email"
+      v-model="loginCreds.email"
     />
     <FormItem
       form-title="Password"
       form-type="password"
-      :form-v-model="loginCreds.password"
+      :value="loginCreds.password"
+      v-model="loginCreds.password"
     />
 
     <button
@@ -43,17 +46,19 @@ export default {
         register: "Register here"
       },
       loginCreds: {
-        email: "clyde83@yahoo.com",
-        password: "localhostPassword",
+        email: "",
+        password: "",
         loginFailed: false
       }
     };
   },
   methods: {
     login: function() {
-      console.log(this.loginCreds.email);
+      //console.log(this.loginCreds.email);
+      //console.log(this.loginCreds.password);
       let email = this.loginCreds.email;
       let password = this.loginCreds.password;
+      console.log(password);
       this.$store
         .dispatch("login", { email, password })
         .then(() => this.$router.push("/feed"))
