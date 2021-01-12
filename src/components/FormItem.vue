@@ -4,6 +4,7 @@
     <input
       :type="formType"
       class="form-control"
+      :class="validation"
       :id="formType"
       :placeholder="formPlaceholder"
       :value="formValue"
@@ -19,7 +20,8 @@ export default {
   props: {
     formType: String,
     formPlaceholder: String,
-    formTitle: String
+    formTitle: String,
+    validation: String
   },
   data: function() {
     return {

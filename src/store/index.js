@@ -57,8 +57,8 @@ export default new Vuex.Store({
               console.log("Token stored successfully! " + localStorage);
               resolve(resp);
             } else {
-              this.state.errors = resp.data.message;
-              console.log(resp.data.message);
+              this.state.errors = resp.data.errors;
+              console.log(resp.data.errors);
             }
           })
           .catch(err => {

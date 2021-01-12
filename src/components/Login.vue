@@ -6,8 +6,8 @@
       form-title="E-Mail Address"
       form-type="email"
       :form-placeholder="content.exampleMail"
-      :form-v-model="loginCreds.email"
       :value="loginCreds.email"
+      :has-error="true"
       v-model="loginCreds.email"
     />
     <FormItem
@@ -17,10 +17,18 @@
       v-model="loginCreds.password"
     />
 
+    <div class="error-container" v-if="this.loginCreds.loginFailed === true">
+      <small class="error-message">{{ content.hasError }}</small>
+    </div>
+
     <button
       type="submit"
       class="btn btn-md w-100 mt-3"
-      @click.prevent="login()"
+      :class="{ invalidForm: addAnimation }"
+      @click.prevent="
+        login();
+        loginSuccess();
+      "
     >
       {{ content.submit }}
     </button>
@@ -43,26 +51,35 @@ export default {
         url: "register",
         exampleMail: "karl@lagerfeld.com",
         submit: "SUBMIT",
-        register: "Register here"
+        register: "Register here",
+        hasError: "Username or Email do not match our records"
       },
       loginCreds: {
         email: "",
         password: "",
         loginFailed: false
-      }
+      },
+      addAnimation: false
     };
   },
   methods: {
     login: function() {
-      //console.log(this.loginCreds.email);
-      //console.log(this.loginCreds.password);
       let email = this.loginCreds.email;
       let password = this.loginCreds.password;
-      console.log(password);
+
       this.$store
         .dispatch("login", { email, password })
         .then(() => this.$router.push("/feed"))
         .catch(err => console.log(err), (this.loginCreds.loginFailed = true));
+    },
+    loginSuccess: function() {
+      if (this.$store.getters.authStatus === "loading") {
+        this.addAnimation = true;
+        setTimeout(() => {
+          this.addAnimation = false;
+        }, 1000);
+        this.loginCreds.loginFailed = true;
+      }
     }
   }
 };
@@ -77,6 +94,7 @@ form {
 button {
   border: 2px solid black;
   font-family: "Teko", sans-serif;
+  position: relative;
   font-size: 2rem;
 }
 
@@ -88,5 +106,43 @@ button:hover {
 small > a {
   color: black;
   text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  text-decoration: underline;
+}
+
+.invalidForm {
+  animation-name: shake;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
+}
+
+@keyframes shake {
+  0% {
+    left: 0;
+  }
+  1% {
+    left: -3px;
+  }
+  2% {
+    left: 5px;
+  }
+  3% {
+    left: -8px;
+  }
+  4% {
+    left: 8px;
+  }
+  5% {
+    left: -5px;
+  }
+  6% {
+    left: 3px;
+  }
+  7% {
+    left: 0;
+  }
 }
 </style>
