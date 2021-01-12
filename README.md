@@ -1,4 +1,9 @@
-# webapp
+# Kado Frontend
+
+##Introduction
+Kado is a Webapp in which a user can get random generated outfits by registering their outfit-items.
+
+This app works with an Laravel REST API. To correctly use this App Setup: https://github.com/bedato/kado-backend
 
 ## Project setup
 ```
@@ -20,5 +25,3 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -4,8 +4,12 @@
     <input
       :type="formType"
       class="form-control"
+      :class="validation"
       :id="formType"
       :placeholder="formPlaceholder"
+      :value="formValue"
+      @change="formChanged"
+      v-model="formValue"
     />
   </div>
 </template>
@@ -16,7 +20,21 @@ export default {
   props: {
     formType: String,
     formPlaceholder: String,
-    formTitle: String
+    formTitle: String,
+    validation: String
+  },
+  data: function() {
+    return {
+      formValue: {}
+    };
+  },
+  methods: {
+    formChanged() {
+      this.$emit("input", this.formValue);
+    }
+  },
+  created() {
+    this.formValue = this.value;
   }
 };
 </script>
