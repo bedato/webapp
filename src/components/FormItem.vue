@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group">
+  <div class="">
     <label :for="formType">{{ formTitle }}</label>
     <input
       :type="formType"
