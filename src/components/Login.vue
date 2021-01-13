@@ -7,7 +7,6 @@
       form-type="email"
       :form-placeholder="content.exampleMail"
       :value="loginCreds.email"
-      :has-error="true"
       v-model="loginCreds.email"
     />
     <FormItem
